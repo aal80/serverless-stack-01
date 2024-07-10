@@ -2,10 +2,6 @@ variable "prefix" {
   type = string
 }
 
-variable "instances" {
-  type = number
-}
-
 required_providers {
   random = {
     source  = "hashicorp/random"
