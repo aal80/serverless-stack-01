@@ -1,11 +1,5 @@
-deployment "simple" {
+deployment "development" {
   variables = {
-    prefix           = "simple"
-  }
-}
-
-deployment "complex" {
-  variables = {
-    prefix           = "complex"
+    prefix           = "dev"
   }
 }
