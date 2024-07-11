@@ -3,3 +3,9 @@ deployment "development" {
     prefix           = "dev"
   }
 }
+
+deployment "production" {
+  variables = {
+    prefix           = "prod"
+  }
+}
