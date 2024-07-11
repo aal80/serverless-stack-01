@@ -22,3 +22,16 @@ component "pet" {
     random = provider.random.this
   }
 }
+
+component "anotherpet" {
+  source = "./pet"
+
+  inputs = {
+    prefix = var.prefix
+  }
+
+  providers = {
+    random = provider.random.this
+  }
+}
+
