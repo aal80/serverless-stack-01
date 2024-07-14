@@ -1,4 +1,4 @@
-deployment "development" {
+deployment "dev" {
   inputs = {
     prefix           = "dev"
   }
