@@ -22,15 +22,3 @@ component "pet" {
     random = provider.random.this
   }
 }
-
-component "debasiss_pet" {
-  source = "./pet"
-
-  inputs = {
-    prefix = var.prefix
-  }
-
-  providers = {
-    random = provider.random.this
-  }
-}
