@@ -1,5 +1,5 @@
 deployment "development" {
-  variables = {
+  inputs = {
     prefix           = "dev"
   }
 }
