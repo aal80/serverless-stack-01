@@ -2,7 +2,7 @@ identity_token "aws" {
   audience = ["aws.workload.identity"]
 }
 
-deployment "development" {
+deployment "development2" {
   inputs = {
     regions        = ["us-east-1"]
     role_arn       = "arn:aws:iam::609845769455:role/tfc-stack-developer"
