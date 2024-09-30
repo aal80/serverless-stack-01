@@ -1,7 +1,7 @@
 data "archive_file" "function_zip" {
   type = "zip"
-  source_dir  = "${path.module}/hello-world"
-  output_path = "${path.module}/../../../tmp/hello-world.zip"
+  source_dir  = "${path.module}/../src"
+  output_path = "${path.module}/../../../tmp/function.zip"
 }
 
 resource "random_pet" "function_name" {
