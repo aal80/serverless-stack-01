@@ -35,8 +35,8 @@ resource "aws_iam_role" "exec_role" {
    function_name = random_pet.function_name.id
    role = aws_iam_role.exec_role.arn
 
-   runtime = "ruby3.2"
-   handler = "hello.LambdaFunctions::Handler.process"
+   runtime = "nodejs20.x"
+   handler = "index.handler"
 
    filename = data.archive_file.function_zip.output_path
    source_code_hash = data.archive_file.function_zip.output_base64sha256
