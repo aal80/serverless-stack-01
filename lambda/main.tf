@@ -1,4 +1,4 @@
-data "archive_file" "function_zip" {
+data "archive_file" "this" {
   type = "zip"
   source_dir  = "${path.module}/../src"
   output_path = "${path.module}/../../../tmp/function.zip"
@@ -9,7 +9,7 @@ resource "random_pet" "function_name" {
   length = 3
 }
 
-resource "aws_iam_role" "exec_role" {
+resource "aws_iam_role" "this" {
    name = random_pet.function_name.id
 
    assume_role_policy = jsonencode({
@@ -26,7 +26,7 @@ resource "aws_iam_role" "exec_role" {
    })
  }
 
- resource "aws_iam_role_policy_attachment" "basic_exec_role" {
+ resource "aws_iam_role_policy_attachment" "this" {
    role       = aws_iam_role.exec_role.name
    policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
  }
@@ -42,18 +42,16 @@ resource "aws_iam_role" "exec_role" {
    source_code_hash = data.archive_file.function_zip.output_base64sha256
  }
 
- resource "aws_cloudwatch_log_group" "hello_world" {
+ resource "aws_cloudwatch_log_group" "this" {
    name = "/aws/lambda/${aws_lambda_function.this.function_name}"
 
    retention_in_days = 30
  }
 
 output "function_name" {
-   description = "Name of the Lambda function."
    value = aws_lambda_function.this.function_name
 }
 
 output "invoke_arn" {
-  description = "The invocation ARN of the function"
   value = aws_lambda_function.this.invoke_arn
 }
