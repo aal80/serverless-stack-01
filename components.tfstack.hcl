@@ -31,10 +31,10 @@ component "lambda" {
   }
 }
 
-component "api_gateway" {
+component "apigateway" {
   for_each = var.regions
 
-  source = "./api-gateway"
+  source = "./apigateway"
 
   inputs = {
     region               = each.value
