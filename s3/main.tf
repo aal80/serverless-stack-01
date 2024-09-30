@@ -1,23 +1,26 @@
-resource "aws_s3_bucket" "lambda_code_storage" {
+resource "aws_s3_bucket" "this" {
   bucket_prefix = "lambda-code-storage"
 }
 
-resource "aws_s3_bucket_ownership_controls" "bucket_controls" {
+resource "aws_s3_bucket_ownership_controls" "this" {
   bucket = aws_s3_bucket.lambda_code_storage.id
   rule {
     object_ownership = "BucketOwnerPreferred"
   }
 }
 
-resource "aws_s3_bucket_acl" "bucket_acl" {
+resource "aws_s3_bucket_acl" "this" {
   depends_on = [aws_s3_bucket_ownership_controls.bucket_controls]
 
   bucket = aws_s3_bucket.lambda_code_storage.id
   acl    = "private"
 }
 
+output "bucket_arn" {
+  value = aws_s3_bucket.this.arn
+}
+
 output "bucket_id" {
-  description = "The ID of the S3 bucket to be used by a downstream component in this stack."
-  value = aws_s3_bucket.lambda_code_storage.id
+  value = aws_s3_bucket.this.id
 }
 
