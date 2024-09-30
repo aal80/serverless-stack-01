@@ -27,19 +27,19 @@ resource "aws_iam_role" "this" {
  }
 
  resource "aws_iam_role_policy_attachment" "this" {
-   role       = aws_iam_role.exec_role.name
+   role       = aws_iam_role.this.name
    policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
  }
 
  resource "aws_lambda_function" "this" {
    function_name = random_pet.function_name.id
-   role = aws_iam_role.exec_role.arn
+   role = aws_iam_role.this.arn
 
    runtime = "nodejs18.x"
    handler = "index.handler"
 
-   filename = data.archive_file.function_zip.output_path
-   source_code_hash = data.archive_file.function_zip.output_base64sha256
+   filename = data.archive_file.this.output_path
+   source_code_hash = data.archive_file.this.output_base64sha256
  }
 
  resource "aws_cloudwatch_log_group" "this" {
