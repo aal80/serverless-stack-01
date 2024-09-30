@@ -31,3 +31,21 @@ component "lambda" {
   }
 }
 
+component "apigateway" {
+  for_each = var.regions
+
+  source = "./apigateway"
+
+  inputs = {
+    region               = each.value
+    lambda_function_name = component.lambda[each.value].function_name
+    lambda_invoke_arn    = component.lambda[each.value].invoke_arn
+  }
+
+  providers = {
+    aws    = provider.aws.configurations[each.value]
+    random = provider.random.this
+  }
+}
+
+
