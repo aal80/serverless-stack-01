@@ -2,7 +2,7 @@ identity_token "aws" {
   audience = ["aws.workload.identity"]
 }
 
-deployment "development1" {
+deployment "development" {
   inputs = {
     regions        = ["us-east-1"]
     role_arn       = "arn:aws:iam::281024298475:role/terraform-cloud-role"
