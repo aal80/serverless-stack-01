@@ -5,7 +5,7 @@ identity_token "aws" {
 deployment "development2" {
   inputs = {
     regions        = ["us-east-1"]
-    role_arn       = "arn:aws:iam::609845769455:role/tfc-stack-developer"
+    role_arn       = "arn:aws:iam::281024298475:role/terraform-cloud-role"
     identity_token = identity_token.aws.jwt
     default_tags   = { stack = "lambda-demo-stack" }
   }
