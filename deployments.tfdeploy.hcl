@@ -12,6 +12,7 @@ deployment "development" {
       environment = "development"
     }
   }
+}
 
 deployment "production" {
   inputs = {
