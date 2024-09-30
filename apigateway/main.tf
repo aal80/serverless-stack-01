@@ -52,7 +52,7 @@ resource "random_pet" "apigateway_name" {
  resource "aws_apigatewayv2_route" "this" {
    api_id = aws_apigatewayv2_api.this.id
 
-   route_key = "GET /hello1"
+   route_key = "GET /hello"
    target    = "integrations/${aws_apigatewayv2_integration.this.id}"
  }
 
