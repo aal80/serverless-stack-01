@@ -1,3 +1,7 @@
+variable "bucket_id" {
+  type = string
+}
+
 resource "random_pet" "function_name" {
   prefix = "lambda-"
   length = 3
