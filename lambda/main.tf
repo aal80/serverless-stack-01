@@ -10,7 +10,7 @@ resource "random_pet" "function_name" {
 }
 
 resource "aws_iam_role" "exec_role" {
-   name = random_pet.lambda_function_name.id
+   name = random_pet.function_name.id
 
    assume_role_policy = jsonencode({
      Version = "2012-10-17"
