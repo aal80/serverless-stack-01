@@ -3,7 +3,7 @@ resource "aws_s3_bucket" "this" {
 }
 
 resource "aws_s3_bucket_ownership_controls" "this" {
-  bucket = aws_s3_bucket.lambda_code_storage.id
+  bucket = aws_s3_bucket.this.id
   rule {
     object_ownership = "BucketOwnerPreferred"
   }
@@ -12,7 +12,7 @@ resource "aws_s3_bucket_ownership_controls" "this" {
 resource "aws_s3_bucket_acl" "this" {
   depends_on = [aws_s3_bucket_ownership_controls.bucket_controls]
 
-  bucket = aws_s3_bucket.lambda_code_storage.id
+  bucket = aws_s3_bucket.this.id
   acl    = "private"
 }
 
