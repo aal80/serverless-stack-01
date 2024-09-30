@@ -35,7 +35,7 @@ resource "aws_iam_role" "exec_role" {
    function_name = random_pet.function_name.id
    role = aws_iam_role.exec_role.arn
 
-   runtime = "nodejs20.x"
+   runtime = "nodejs18.x"
    handler = "index.handler"
 
    filename = data.archive_file.function_zip.output_path
