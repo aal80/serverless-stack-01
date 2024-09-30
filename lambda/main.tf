@@ -10,7 +10,7 @@ resource "random_pet" "function_name" {
 data "archive_file" "this" {
   type = "zip"
   source_dir  = "${path.module}/../src"
-  output_path = "${path.module}/../../../tmp/${random_pet.function_name}.zip"
+  output_path = "${path.module}/../../../tmp/${random_pet.function_name.id}.zip"
 }
 
 
@@ -21,7 +21,7 @@ data "local_file" "this" {
 resource "aws_s3_object" "this" {
   bucket = var.bucket_id
 
-  key    = "${random_pet.function_name}.zip"
+  key    = "${random_pet.function_name.id}.zip"
 
   content_base64 = data.local_file.this.content_base64
   # source = data.archive_file.lambda_hello_world.output_path
